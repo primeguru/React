@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.password) {
+      setError('All fields are required');
+      return;
+    }
+    setError('');
+    alert('Form submitted!');
+    setForm({ name: '', email: '', password: '' });
+  };
+ return (
+    <div style={{ textAlign: 'center' }}>
+      <h1>Register</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /><br />
+        <input type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /><br />
+        <input type="password" placeholder="Password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} /><br />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
+export default App;
