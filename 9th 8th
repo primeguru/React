@@ -1,1 +1,24 @@
 
+import React from "react"; import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+
+function App() { return ( <Router> <div className="min-h-screen bg-gray-100"> <nav className="bg-white shadow-md p-4"> <ul className="flex space-x-4"> <li> <NavLink to="/" end className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700" } > Home </NavLink> </li> <li> <NavLink to="/about" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700" } > About </NavLink> </li> <li> <NavLink to="/contact" className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700" } > Contact </NavLink> </li> </ul> </nav>
+
+<div className="p-6">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </div>
+  </div>
+</Router>
+
+); }
+
+function Home() { return <h1 className="text-2xl font-semibold">Welcome to the Home Page</h1>; }
+
+function About() { return <h1 className="text-2xl font-semibold">About Us</h1>; }
+
+function Contact() { return <h1 className="text-2xl font-semibold">Contact Information</h1>; }
+
+export default App;
