@@ -1,0 +1,36 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+
+  const handleStepChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    setStep(isNaN(value) ? 1 : value);
+  };
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>Counter Application</h1>
+      <h2>Counter: {count}</h2>
+
+      <div style={{ marginBottom: '20px' }}>
+        <label>
+          Step Value:&nbsp;
+          <input
+            type="number"
+            value={step}
+            onChange={handleStepChange}
+            style={{ width: '60px', textAlign: 'center' }}
+          />
+        </label>
+      </div>
+
+      <button onClick={() => setCount(count + step)}>Increase by {step}</button>&nbsp;
+      <button onClick={() => setCount(count - step)}>Decrease by {step}</button>&nbsp;
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
+  );
+}
+
+export default App;
