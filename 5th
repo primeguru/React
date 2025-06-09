@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+import './App.css';
+
+const App = () => {
+  const [figures, setFigures] = useState([
+    { imageUrl: 'https://picsum.photos/400?random=1', caption: 'Random Image 1' },
+    { imageUrl: 'https://picsum.photos/400?random=2', caption: 'Random Image 2' },
+    { imageUrl: 'https://picsum.photos/400?random=3', caption: 'Random Image 3' },
+    { imageUrl: 'https://picsum.photos/400?random=4', caption: 'Random Image 4' },
+  ]);
+
+  const addFigure = () => {
+    const nextIndex = figures.length + 1;
+    setFigures([
+      ...figures,
+      {
+        imageUrl: https://picsum.photos/400?random=${nextIndex},
+        caption: Random Image ${nextIndex},
+      },
+    ]);
+  };
+
+  const removeFigure = () => {
+    setFigures(figures.slice(0, -1));
+  };
+
+  return (
+    <div className="app">
+      <h1>Dynamic Image Gallery</h1>
+      <div className="button-box">
+        <button onClick={addFigure} className="action-button">Add Image</button>
+        <button onClick={removeFigure} className="action-button">Remove Image</button>
+      </div>
+      <div className="figure-list">
+        {figures.map((fig, idx) => (
+          <div key={idx} className="figure">
+            <img src={fig.imageUrl} alt={fig.caption} className="figure-image" />
+            <p className="figure-caption">{fig.caption}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
